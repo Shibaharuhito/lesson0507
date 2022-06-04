@@ -9,7 +9,11 @@ namespace BMSYS
         [SerializeField]
         private int index;
 
-        private int k4sen;
+        [SerializeField]
+        private Rigidbody rigidBody;
+
+        [SerializeField]
+        private float BallSpeed=30;
   
         // Start is called before the first frame update
         void Start()
@@ -17,9 +21,19 @@ namespace BMSYS
             Init();
         }
 
+        private void Awake()
+        {
+            //rigidBody=
+        }
+
         // Update is called once per frame
         void Update()
         {
+            // スペースを押したらバウンド止まる
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                rigidBody.velocity = Vector3.up * BallSpeed;
+            }
         }
 
         public void Init()
